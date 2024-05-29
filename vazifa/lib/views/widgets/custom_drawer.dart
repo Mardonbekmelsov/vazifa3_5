@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lesson43/views/screens/home_screen.dart';
+import 'package:lesson43/views/screens/note_screen.dart';
 import 'package:lesson43/views/screens/todo_screens.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -17,9 +18,6 @@ class CustomDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  "Mehmonxonalar",
-                ),
                 Text(
                   "MENYU",
                 ),
@@ -50,13 +48,31 @@ class CustomDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return  ToDoScreen();
+                    return  const ToDoScreen();
                   },
                 ),
               );
             },
             title: const Text(
               "ToDo",
+            ),
+            trailing: const Icon(
+              Icons.keyboard_arrow_right,
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (ctx) {
+                    return  const NoteScreen();
+                  },
+                ),
+              );
+            },
+            title: const Text(
+              "Note",
             ),
             trailing: const Icon(
               Icons.keyboard_arrow_right,

@@ -1,11 +1,11 @@
-class Todo {
+class ToDo {
   int id;
   String title;
   String description;
   DateTime date;
   bool isComplated;
 
-  Todo(
+  ToDo(
       {required this.id,
       required this.title,
       required this.description,

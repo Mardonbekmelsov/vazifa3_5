@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lesson43/views/widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  
   const HomeScreen({
     super.key,
   });
@@ -12,14 +11,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Bosh Sahifa"),
+        title: const Text("Bosh Sahifa"),
       ),
-      drawer: CustomDrawer(
-      ),
+      drawer: const CustomDrawer(),
     );
   }
 }

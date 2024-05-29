@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:lesson43/controllers/todo_controller.dart';
+import 'package:lesson43/controllers/note_controller.dart';
 import 'package:lesson43/views/widgets/custom_drawer.dart';
-import 'package:lesson43/views/widgets/todo_add_dialog.dart';
-import 'package:lesson43/views/widgets/todo_edit_dialog.dart';
-import 'package:lesson43/views/widgets/todo_item.dart';
+import 'package:lesson43/views/widgets/note_add_dialog.dart';
+import 'package:lesson43/views/widgets/note_edit_dialog.dart';
+import 'package:lesson43/views/widgets/note_item.dart';
 
-class ToDoScreen extends StatefulWidget {
-  const ToDoScreen({super.key});
+class NoteScreen extends StatefulWidget {
+  const NoteScreen({super.key});
 
   @override
-  State<ToDoScreen> createState() => _ToDoScreenState();
+  State<NoteScreen> createState() => _NoteScreenState();
 }
 
-class _ToDoScreenState extends State<ToDoScreen> {
-  final TodoController toDoController = TodoController();
+class _NoteScreenState extends State<NoteScreen> {
+  final NoteController noteController = NoteController();
 
   void delete(int index) {
-    toDoController.delete(index);
+    noteController.delete(index);
     setState(() {});
   }
 
@@ -25,19 +25,15 @@ class _ToDoScreenState extends State<ToDoScreen> {
         barrierDismissible: false,
         context: context,
         builder: (ctx) {
-          return const ToDoEditDialog();
+          return const NoteEditDialog();
         });
 
     if (data != null) {
-      toDoController.edit(index, data['title'], data['description']);
+      noteController.edit(index, data['content']);
       setState(() {});
     }
   }
 
-  void changeposition(int index) {
-    toDoController.changeposition(index);
-    setState(() {});
-  }
 
 
 
@@ -53,13 +49,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
       ),
        drawer: const CustomDrawer(),
       body: ListView.builder(
-          itemCount: toDoController.lst.length,
+          itemCount: noteController.lstNote.length,
           itemBuilder: (ctx, index) {
-            return ToDoItem(
-              toDoController.lst[index],
+            return NoteItem(
+              noteController.lstNote[index],
               edit: () => edit(index),
               onDelete: () => delete(index),
-              changeposition: () => changeposition(index),
             );
           }),
       floatingActionButton: FloatingActionButton(
@@ -68,10 +63,10 @@ class _ToDoScreenState extends State<ToDoScreen> {
               barrierDismissible: false,
               context: context,
               builder: (ctx) {
-                return const ToDoAddDialog();
+                return const NoteAddDialog();
               });
           if (data != null) {
-            toDoController.add(toDoController.lst.last.id+1, data['title'], data['description'], DateTime.now(), true);
+            noteController.add(noteController.lstNote.last.id+1, data['title'], data['content'], DateTime.now(), );
             setState(() {});
           }
         },

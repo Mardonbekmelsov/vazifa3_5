@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lesson43/controllers/todo_controller.dart';
 import 'package:lesson43/model/todo.dart';
 
 // ignore: must_be_immutable
 class ToDoItem extends StatefulWidget {
-  int index;
-  final Todo todo;
-  ToDoItem({super.key,required this.todo, required this.index});
+  final Function() onDelete;
+  final Function() edit;
+  final Function() changeposition;
+  final ToDo todo;
+  const ToDoItem(this.todo,
+      {super.key,
+      required this.onDelete,
+      required this.changeposition,
+      required this.edit});
 
   @override
   // ignore: no_logic_in_create_state
@@ -13,14 +20,12 @@ class ToDoItem extends StatefulWidget {
 }
 
 class _ToDoItemState extends State<ToDoItem> {
+  final TodoController toDoController = TodoController();
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        setState(() {
-          
-        });
-      },
+      onTap: widget.changeposition,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
         child: Container(
@@ -43,20 +48,28 @@ class _ToDoItemState extends State<ToDoItem> {
                         decoration: TextDecoration.lineThrough,
                         fontSize: 20,
                         fontWeight: FontWeight.w500)),
+            subtitle: Text(widget.todo.description,
+                style: widget.todo.isComplated
+                    ? const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey)
+                    : const TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey)),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                    onPressed: () {
-                      // TodoNotifires.of(context).edit(widget.index, , description)
-                    },
+                    onPressed: widget.todo.isComplated ? widget.edit : () {},
                     icon: const Icon(
                       Icons.edit,
                       color: Colors.blue,
                     )),
                 IconButton(
-                    onPressed: () {
-                    },
+                    onPressed: widget.onDelete,
                     icon: const Icon(
                       Icons.delete,
                       color: Colors.red,

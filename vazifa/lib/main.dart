@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lesson43/controllers/todo_controller.dart';
 import 'package:lesson43/views/screens/home_screen.dart';
 
 void main() {
@@ -16,9 +15,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: const HomeScreen(),
+                home: HomeScreen(),
               );
   }
 }
