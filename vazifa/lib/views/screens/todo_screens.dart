@@ -39,8 +39,6 @@ class _ToDoScreenState extends State<ToDoScreen> {
     setState(() {});
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +49,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
         ),
         centerTitle: true,
       ),
-       drawer: const CustomDrawer(),
+      drawer: const CustomDrawer(),
       body: ListView.builder(
           itemCount: toDoController.lst.length,
           itemBuilder: (ctx, index) {
@@ -71,7 +69,8 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 return const ToDoAddDialog();
               });
           if (data != null) {
-            toDoController.add(toDoController.lst.last.id+1, data['title'], data['description'], DateTime.now(), true);
+            toDoController.add(toDoController.lst.last.id + 1, data['title'],
+                data['description'], DateTime.now(), true);
             setState(() {});
           }
         },

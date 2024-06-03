@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lesson43/views/screens/home_screen.dart';
+import 'package:lesson43/views/screens/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }

@@ -3,20 +3,22 @@ import 'package:lesson43/model/note.dart';
 
 class NoteController with ChangeNotifier {
   final List<Note> _lstNote = [
-    Note(id: 0, title: 'note1', content: "njksnvknskjnvskj", createDate: DateTime.now())
+    Note(
+        id: 0,
+        title: 'note1',
+        content: "njksnvknskjnvskj",
+        createDate: DateTime.now())
   ];
 
   List<Note> get lstNote {
     return [..._lstNote];
   }
 
-
-  void add(int i,String title,String content,DateTime date) {
+  void add(int i, String title, String content, DateTime date) {
     _lstNote.add(Note(id: i, title: title, content: content, createDate: date));
   }
 
-
-  void edit(int i,String content) {
+  void edit(int i, String content) {
     _lstNote[i].content += " $content";
   }
 

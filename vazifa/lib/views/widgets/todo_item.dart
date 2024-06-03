@@ -32,7 +32,7 @@ class _ToDoItemState extends State<ToDoItem> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25), color: Colors.yellow),
           child: ListTile(
-            leading: widget.todo.isComplated
+            leading: widget.todo.isCompleted
                 ? const Icon(
                     Icons.circle_outlined,
                     color: Colors.blue,
@@ -42,14 +42,14 @@ class _ToDoItemState extends State<ToDoItem> {
                     color: Colors.green,
                   ),
             title: Text(widget.todo.title,
-                style: widget.todo.isComplated
+                style: widget.todo.isCompleted
                     ? const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)
                     : const TextStyle(
                         decoration: TextDecoration.lineThrough,
                         fontSize: 20,
                         fontWeight: FontWeight.w500)),
             subtitle: Text(widget.todo.description,
-                style: widget.todo.isComplated
+                style: widget.todo.isCompleted
                     ? const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -63,7 +63,7 @@ class _ToDoItemState extends State<ToDoItem> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                    onPressed: widget.todo.isComplated ? widget.edit : () {},
+                    onPressed: widget.todo.isCompleted ? widget.edit : () {},
                     icon: const Icon(
                       Icons.edit,
                       color: Colors.blue,

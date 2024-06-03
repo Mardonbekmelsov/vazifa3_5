@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lesson43/views/screens/home_screen.dart';
+import 'package:lesson43/views/screens/main_screen.dart';
 import 'package:lesson43/views/screens/note_screen.dart';
+import 'package:lesson43/views/screens/settings_screen.dart';
 import 'package:lesson43/views/screens/todo_screens.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -30,7 +31,7 @@ class CustomDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return const HomeScreen();
+                    return const MainScreen();
                   },
                 ),
               );
@@ -44,11 +45,11 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return  const ToDoScreen();
+                    return const ToDoScreen();
                   },
                 ),
               );
@@ -62,17 +63,35 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return  const NoteScreen();
+                    return const NoteScreen();
                   },
                 ),
               );
             },
             title: const Text(
               "Note",
+            ),
+            trailing: const Icon(
+              Icons.keyboard_arrow_right,
+            ),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (ctx) {
+                    return SettingsScreen();
+                  },
+                ),
+              );
+            },
+            title: const Text(
+              "Settings",
             ),
             trailing: const Icon(
               Icons.keyboard_arrow_right,

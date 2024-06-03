@@ -3,12 +3,12 @@ class ToDo {
   String title;
   String description;
   DateTime date;
-  bool isComplated;
+  bool isCompleted;
 
   ToDo(
       {required this.id,
       required this.title,
       required this.description,
       required this.date,
-      required this.isComplated});
+      required this.isCompleted});
 }
